@@ -16,12 +16,13 @@ return new class extends Migration
             $table->string('name', 255);
             $table->string('code', 10)->unique();
             $table->foreignId('user_id')
+                ->nullable()
                 ->constrained()
-                ->cascadeOnDelete();
+                ->nullOnDelete();
             $table->string('section')->nullable();
             $table->string('subject')->nullable();
             $table->string('room')->nullable();
-            $table->string('cover_image_path')->nullable();
+            $table->string('cover_image')->nullable();
             $table->string('theme')->nullable();
             $table->enum('status', ['active', 'archived'])->default('active');
             $table->timestamps();
